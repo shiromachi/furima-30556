@@ -15,7 +15,7 @@
 
 - has_many :items
 - has_many :comments
-- has_many :management
+- has_many :managements
 
 
 ## items テーブル
