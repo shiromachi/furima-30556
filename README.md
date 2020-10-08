@@ -15,7 +15,6 @@
 
 - has_many :items
 - has_many :comments
-- has_many :orders
 - has_one :management
 
 
@@ -37,7 +36,6 @@
 
 - belongs_to :user
 - has_many :comments
-- has_one :order
 - has_one :management
 
 ## comments テーブル
@@ -62,11 +60,10 @@
 | street      | string     | null: false                    |
 | building    | string     |                                |
 | phone       | string     | null: false                    |
+| management  | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :user
-- belongs_to :item
-- has_one :management
+- belongs_to :management
 
 ## managements テーブル
 
@@ -78,4 +75,4 @@
 ### Association
 - belongs_to :user
 - belongs_to :item
-- belongs_to :order
+- has_one :order
