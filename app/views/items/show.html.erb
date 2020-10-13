@@ -23,7 +23,7 @@
       </span>
     </div>
 
-    <% if current_user == @item.user %>
+    <% if user_signed_in? && current_user == @item.user %>
 
       <%= link_to '商品の編集', edit_item_path, method: :get, class: "item-red-btn" %>
       <p class='or-text'>or</p>
@@ -101,7 +101,7 @@
       後ろの商品 ＞
     </a>
   </div>
-  <a href="#" class='another-item'><%= "商品のカテゴリー名" %>をもっと見る</a>
+  <a href="#" class='another-item'><%= @item.category.name %>をもっと見る</a>
 </div>
 
 <%= render "devise/shared/footer" %>
