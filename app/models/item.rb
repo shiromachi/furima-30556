@@ -11,10 +11,10 @@ class Item < ApplicationRecord
       validates :day_to_ship_id
     end
 
-    validates :price,          numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is out of setting range"}
+    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'is out of setting range' }
     validates :image
   end
-  
+
   belongs_to :user, optional: true
   has_one_attached :image
 
