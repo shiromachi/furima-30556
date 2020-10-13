@@ -4,11 +4,11 @@ class Item < ApplicationRecord
     validates :description
 
     with_options numericality: { other_than: 1 } do
-      validates :category_id,    numericality: { other_than: 1 }
-      validates :status_id,      numericality: { other_than: 1 }
-      validates :charge_type_id, numericality: { other_than: 1 }
-      validates :area_id,        numericality: { other_than: 1 }
-      validates :day_to_ship_id, numericality: { other_than: 1 }
+      validates :category_id
+      validates :status_id
+      validates :charge_type_id
+      validates :area_id
+      validates :day_to_ship_id
     end
 
     validates :price,          numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is out of setting range"}
