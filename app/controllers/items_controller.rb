@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :move_to_new, only: :new
 
   def index
-    @item = Item.all
+    @items = Item.includes(:user).order("created_at DESC")
   end
 
   def new
@@ -16,6 +16,10 @@ class ItemsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    @item = Item.find(params[:id])
   end
 
   private
