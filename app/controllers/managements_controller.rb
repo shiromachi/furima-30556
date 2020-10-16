@@ -2,22 +2,16 @@ class ManagementsController < ApplicationController
   before_action :move_to_new, only: :index
   before_action :move_to_top, only: :index
   before_action :move_to_page, only: :index
+  before_action :set_item, only: [:index, :create]
 
   def index
     @management_order = ManagementOrder.new
-    @item = Item.find(params[:item_id])
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @management_order = ManagementOrder.new(management_params)
     if @management_order.valid?
-      Payjp.api_key = ENV['PAYJP_SECRET_KEY']
-      Payjp::Charge.create(
-        amount: @item.price,
-        card: management_params[:token],
-        currency: 'jpy'
-      )
+      pay_item
       @management_order.save
       redirect_to root_path
     else
@@ -43,5 +37,18 @@ class ManagementsController < ApplicationController
   def move_to_page
     item = Item.find(params[:item_id])
     redirect_to root_path if current_user.id == item.user_id
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
+
+  def pay_item
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
+      Payjp::Charge.create(
+        amount: @item.price,
+        card: management_params[:token],
+        currency: 'jpy'
+      )
   end
 end
