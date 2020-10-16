@@ -59,7 +59,7 @@
 | city        | string     | null: false                    |
 | street      | string     | null: false                    |
 | building    | string     |                                |
-| phone       | string     | null: false                    |
+| phone       | integer    | null: false                    |
 | management  | references | null: false, foreign_key: true |
 
 ### Association
