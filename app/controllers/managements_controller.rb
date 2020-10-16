@@ -1,8 +1,7 @@
 class ManagementsController < ApplicationController
+  before_action :set_item, only: [:index, :create]
   before_action :move_to_new, only: :index
   before_action :move_to_top, only: :index
-  before_action :move_to_page, only: :index
-  before_action :set_item, only: [:index, :create]
 
   def index
     @management_order = ManagementOrder.new
@@ -30,13 +29,7 @@ class ManagementsController < ApplicationController
   end
 
   def move_to_top
-    item = Item.find(params[:item_id])
-    redirect_to root_path if item.management.present?
-  end
-
-  def move_to_page
-    item = Item.find(params[:item_id])
-    redirect_to root_path if current_user.id == item.user_id
+    redirect_to root_path if @item.management.present? || current_user.id == @item.user_id
   end
 
   def set_item
