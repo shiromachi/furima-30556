@@ -6,8 +6,6 @@ class CommentsController < ApplicationController
   def create
     @item = Item.find(params[:item_id])
     @comment = @item.comments.new(text: params[:comment][:text])
-    if @comment.save
-      ActionCable.server.broadcast 'comment_channel', content: @comment
-    end
+    ActionCable.server.broadcast 'comment_channel', content: @comment if @comment.save
   end
 end

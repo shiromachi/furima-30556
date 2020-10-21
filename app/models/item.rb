@@ -3,7 +3,7 @@ class Item < ApplicationRecord
     validates :title
     validates :description
 
-    with_options numericality: { other_than: 1, message: 'を選択してください'} do
+    with_options numericality: { other_than: 1, message: 'を選択してください' } do
       validates :category_id
       validates :status_id
       validates :charge_type_id
