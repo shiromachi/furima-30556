@@ -18,3 +18,5 @@ ja:
        area_id: 発送元の地域
        day_to_ship_id: 発送までの日数
        price: 価格
+     comment:
+       text: テキスト
