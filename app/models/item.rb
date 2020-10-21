@@ -3,7 +3,7 @@ class Item < ApplicationRecord
     validates :title
     validates :description
 
-    with_options numericality: { other_than: 1 } do
+    with_options numericality: { other_than: 1, message: 'を選択してください'} do
       validates :category_id
       validates :status_id
       validates :charge_type_id
@@ -11,7 +11,7 @@ class Item < ApplicationRecord
       validates :day_to_ship_id
     end
 
-    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'is out of setting range' }
+    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'は300〜9,999,999の間で入力してください' }
     validates :image
   end
 
