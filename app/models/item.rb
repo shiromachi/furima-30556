@@ -12,11 +12,11 @@ class Item < ApplicationRecord
     end
 
     validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'は300〜9,999,999の間で入力してください' }
-    validates :image
+    validates :images
   end
 
   belongs_to :user, optional: true
-  has_one_attached :image
+  has_many_attached :images
   has_one :management
   has_many :comments
 
