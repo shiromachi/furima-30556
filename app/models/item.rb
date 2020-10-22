@@ -17,8 +17,8 @@ class Item < ApplicationRecord
 
   belongs_to :user, optional: true
   has_many_attached :images
-  has_one :management
-  has_many :comments
+  has_one :management, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :category

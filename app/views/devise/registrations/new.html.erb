@@ -11,6 +11,8 @@
     <%= render 'devise/shared/error_messages', model: f.object %>
 
     <div class="form-group">
+      <%= link_to 'Facebookで登録', user_facebook_omniauth_authorize_path, method: :post, class:'sns-link' %>
+      <%= link_to 'Googleで登録', user_google_oauth2_omniauth_authorize_path, method: :post, class:'sns-link' %>
       <div class='form-text-wrap'>
         <label class="form-text">ニックネーム</label>
         <span class="indispensable">必須</span>

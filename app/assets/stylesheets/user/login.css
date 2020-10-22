@@ -18,3 +18,12 @@
   text-align: center;
   color: red;
 }
+
+.sns-link-login a {
+  color: #0099e8;
+  text-align: right;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
