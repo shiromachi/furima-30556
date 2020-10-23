@@ -26,4 +26,12 @@ class Item < ApplicationRecord
   belongs_to_active_hash :charge_type
   belongs_to_active_hash :area
   belongs_to_active_hash :day_to_ship
+
+  def self.search(search)
+    if search != ""
+      Item.where('title LIKE(?)', "%#{search}%")
+    else
+      Item.all
+    end
+  end
 end

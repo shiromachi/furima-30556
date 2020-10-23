@@ -1,0 +1,40 @@
+<%= render "devise/shared/header" %>
+
+<div class='item-contents'>
+  <h2 class='title'>検索結果</h2>
+  <ul class='item-lists'>
+
+    <% @items.each do |item| %>
+      <% unless item.management.present? %>
+        <li class='list'>
+          <%= link_to item_path(item) do %>
+            <div class='item-img-content'>
+              <%= image_tag item.images[0], class: "item-img" %>
+    
+              <% if item.management.present? %>
+                <div class='sold-out'>
+                  <span>Sold Out!!</span>
+                </div>
+              <% end %>
+    
+            </div>
+            <div class='item-info'>
+              <h3 class='item-name'>
+                <%= item.title %>
+              </h3>
+              <div class='item-price'>
+                <span><%= item.price %>円<br>(税込み)</span>
+                <div class='star-btn'>
+                  <%= image_tag "star.png", class:"star-icon" %>
+                  <span class='star-count'>0</span>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
+
+<%= render "devise/shared/footer" %>

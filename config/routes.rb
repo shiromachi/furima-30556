@@ -7,5 +7,8 @@ Rails.application.routes.draw do
   resources :items do
     resources :managements, only: [:index, :create]
     resources :comments, only: [:new, :create]
+    collection do
+      get 'search'
+    end
   end
 end
