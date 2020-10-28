@@ -6,8 +6,8 @@ RSpec.describe "ユーザー新規登録", type: :system do
   end
 
   def visit_with_http_auth(path)
-    username = 'furima'
-    password = '1016'
+    username = ENV["BASIC_AUTH_USER"]
+    password = ENV["BASIC_AUTH_PASSWORD"]
     visit "http://#{username}:#{password}@#{Capybara.current_session.server.host}:#{Capybara.current_session.server.port}#{path}"
   end
 
